@@ -54,62 +54,70 @@ This project simulates buses moving along real-world routes using a timed interv
 
 ### 1. Install dependencies
 
+```bash
 npm install
+```
 
 ### 2. Run the server
 
-Server runs on: http://localhost:4000
+Server runs on: `http://localhost:4000`
+
+---
 
 ## API Endpoints
 
 ### Simulation Controls
 
-POST /simulation/start
-Starts the simulation (if not already running)
+| Method | Endpoint             | Description                                     |
+| ------ | -------------------- | ----------------------------------------------- |
+| `POST` | `/simulation/start`  | Starts the simulation (if not already running)  |
+| `POST` | `/simulation/stop`   | Stops the simulation                            |
+| `POST` | `/simulation/reset`  | Resets all vehicles to their starting positions |
+| `GET`  | `/simulation/status` | Returns simulation state                        |
 
-POST /simulation/stop
-Stops the simulation
+**Example response:**
 
-POST /simulation/reset
-Resets all vehicles to their starting positions
-
-GET /simulation/status
-Returns simulation state
-
-Response: { "isRunning": true }
+```json
+{ "isRunning": true }
+```
 
 ### Vehicles
 
-GET /vehicles
-Returns all vehicles with current positions
-
-GET /vehicles/:id
-Returns a single vehicle by ID
+| Method | Endpoint        | Description                                 |
+| ------ | --------------- | ------------------------------------------- |
+| `GET`  | `/vehicles`     | Returns all vehicles with current positions |
+| `GET`  | `/vehicles/:id` | Returns a single vehicle by ID              |
 
 ### Vehicle Data Structure
 
+```json
 {
-"id": 1,
-"name": "Bus A",
-"lat": 18.012441,
-"lng": -76.799093,
-"route": [...],
-"routeIndex": 1,
-"direction": 1,
-"speed": 50,
-"status": "on_route",
-"lastUpdated": 1710000000000
+  "id": 1,
+  "name": "Bus A",
+  "lat": 18.012441,
+  "lng": -76.799093,
+  "route": [...],
+  "routeIndex": 1,
+  "direction": 1,
+  "speed": 50,
+  "status": "on_route",
+  "lastUpdated": 1710000000000
 }
+```
+
+---
 
 ## Simulation Behavior
 
 - Vehicles move along a route using interpolation
 - When a vehicle reaches the end:
-- Direction flips
-- It travels back along the route
+  - Direction flips
+  - It travels back along the route
 - Updates happen every 1 second
 
-Note: Current movement is optimized for UI smoothness and does not strictly simulate real-world speed.
+> **Note:** Current movement is optimized for UI smoothness and does not strictly simulate real-world speed.
+
+---
 
 ## Notes
 
