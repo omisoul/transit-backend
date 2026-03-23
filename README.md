@@ -38,13 +38,15 @@ This project simulates buses moving along real-world routes using a timed interv
 
 ## Project Structure
 
-├── server.js # Main server + simulation controls
-├── routes/
-│ └── vehicles.js # Vehicle API routes
+```
+├── server.js          # Main server + simulation controls
 ├── services/
-│ └── simulation.js # Simulation engine
-├── data/
-│ └── vehicles.js # Vehicle + route data
+│   └── simulation.js  # Simulation engine
+├── routes/
+│   └── vehicles.js    # Vehicle API routes
+└── data/
+    └── vehicles.js    # Vehicle + route data
+```
 
 ---
 
